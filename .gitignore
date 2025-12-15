@@ -1,0 +1,41 @@
+# =========================
+# Java / Spring Boot
+# =========================
+target/
+*.class
+*.log
+
+# =========================
+# Maven / Gradle
+# =========================
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+
+# =========================
+# Environment / Secrets
+# =========================
+application-local.properties
+application-prod.properties
+*.env
+
+# =========================
+# IDE / OS
+# =========================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Database / Temp
+# =========================
+*.db
+*.sqlite
+*.sql
