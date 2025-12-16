@@ -1,14 +1,13 @@
-# Use a stable Java 17 base image
-FROM eclipse-temurin:17-jdk
-
-# Create /app inside container
+# Stage 1: Build the application
+FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the compiled jar into the image
-COPY target/*.jar app.jar
-
-# Expose the Spring Boot port
+# Stage 2: Run the application
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Run the Spring Boot JAR
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
