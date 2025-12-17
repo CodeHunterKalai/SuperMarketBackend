@@ -15,6 +15,11 @@ import java.time.LocalDate;
 public class ReportController {
     
     private final ReportService reportService;
+
+    @GetMapping("/api/cron/keep-alive")
+      public ResponseEntity<String> keepAlive() {
+       return ResponseEntity.ok("OK");
+     }
     
     @GetMapping("/dashboard")
     public ResponseEntity<DashboardStats> getDashboardStats() {
